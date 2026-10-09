@@ -1,0 +1,667 @@
+{
+  "task": "Refund customers who complained about damaged parcels and email each one, excluding duplicate orders.",
+  "toolCalls": [
+    {
+      "tool": "db_query",
+      "args": {
+        "sql": "select * from complaints order by id"
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 1,
+        "amount_inr": 1000,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer2@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹1000 for order #1 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 2,
+        "amount_inr": 1100,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer3@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹1100 for order #2 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 3,
+        "amount_inr": 1200,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer4@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹1200 for order #3 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 4,
+        "amount_inr": 900,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer5@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹900 for order #4 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 5,
+        "amount_inr": 1500,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer6@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹1500 for order #5 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 6,
+        "amount_inr": 800,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer7@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹800 for order #6 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 7,
+        "amount_inr": 1400,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer8@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹1400 for order #7 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 8,
+        "amount_inr": 1300,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer9@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹1300 for order #8 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 9,
+        "amount_inr": 1300,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer10@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹1300 for order #9 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 10,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer11@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #10 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 11,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer12@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #11 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 12,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer13@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #12 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 13,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer14@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #13 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 14,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer15@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #14 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 15,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer16@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #15 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 16,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer17@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #16 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 17,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer18@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #17 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 18,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer19@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #18 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 19,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer20@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #19 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 20,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer21@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #20 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 21,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer22@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #21 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 22,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer23@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #22 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 23,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer24@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #23 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 24,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer25@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #24 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 25,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer26@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #25 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 26,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer27@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #26 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 27,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer28@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #27 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 28,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer29@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #28 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 29,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer30@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #29 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 30,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer31@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #30 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 31,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer32@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #31 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 32,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer33@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #32 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 33,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer34@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #33 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 34,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer35@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #34 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 35,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer36@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #35 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 36,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer37@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #36 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 37,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer38@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #37 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 38,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer39@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #38 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 39,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer40@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #39 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 40,
+        "amount_inr": 2600,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer41@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹2600 for order #40 has been processed."
+      }
+    },
+    {
+      "tool": "payments_refund",
+      "args": {
+        "order_id": 41,
+        "amount_inr": 5300,
+        "reason": "damaged parcel"
+      }
+    },
+    {
+      "tool": "email_send",
+      "args": {
+        "to": "customer42@chaicraft.in",
+        "subject": "Your refund",
+        "body": "Your refund of ₹5300 for order #41 has been processed."
+      }
+    }
+  ]
+}
