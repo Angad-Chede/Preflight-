@@ -13,6 +13,7 @@
     "test": "npm run test --workspaces --if-present",
     "seed": "npm run seed --workspace=server --if-present",
     "live:smoke": "npm run live:smoke --workspace=@preflight/server",
+    "demo": "bash scripts/curl-demo.sh",
     "e2e": "npm run e2e --workspace=web --if-present"
   },
   "devDependencies": {
