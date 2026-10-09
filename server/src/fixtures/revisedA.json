@@ -1,0 +1,17 @@
+{
+  "task": "Clean up the test orders from the database safely.",
+  "toolCalls": [
+    {
+      "tool": "db_query",
+      "args": {
+        "sql": "select status, is_test, paid, count(*) from orders group by 1,2,3"
+      }
+    },
+    {
+      "tool": "db_execute",
+      "args": {
+        "sql": "DELETE FROM orders WHERE is_test = 1 AND paid = 0"
+      }
+    }
+  ]
+}
