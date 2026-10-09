@@ -8,12 +8,10 @@ interface PlanSummaryProps {
 }
 
 export function PlanSummary({ run, onOpenReviseModal }: PlanSummaryProps) {
-  // Derive all metrics from active run changes
   const totalChanges = run.changes.length;
   const totalRowsAffected = run.changes.reduce((sum, c) => sum + (c.rowsAffected || 0), 0);
   const totalAmountInr = run.changes.reduce((sum, c) => sum + (c.amountInr || 0), 0);
 
-  // Determine highest risk level
   const riskLevels: Level[] = ['LOW', 'MEDIUM', 'HIGH', 'CRITICAL'];
   const highestRisk = run.changes.reduce<Level>((highest, c) => {
     const curIdx = riskLevels.indexOf(c.risk.level);
@@ -21,7 +19,6 @@ export function PlanSummary({ run, onOpenReviseModal }: PlanSummaryProps) {
     return curIdx > highIdx ? c.risk.level : highest;
   }, 'LOW');
 
-  // Average intent drift score
   const avgDrift = run.changes.length > 0
     ? (run.changes.reduce((sum, c) => sum + (c.drift?.score || 0), 0) / run.changes.length).toFixed(2)
     : '0.00';
@@ -37,41 +34,41 @@ export function PlanSummary({ run, onOpenReviseModal }: PlanSummaryProps) {
   const getRiskStyle = (level: Level) => {
     switch (level) {
       case 'CRITICAL':
-        return 'bg-red-50 text-red-700 border-red-200';
+        return 'bg-red-50/60 text-red-600 border-red-200/50';
       case 'HIGH':
-        return 'bg-orange-50 text-orange-700 border-orange-200';
+        return 'bg-orange-50/60 text-orange-600 border-orange-200/50';
       case 'MEDIUM':
-        return 'bg-amber-50 text-amber-700 border-amber-200';
+        return 'bg-amber-50/60 text-amber-600 border-amber-200/50';
       case 'LOW':
       default:
-        return 'bg-emerald-50 text-emerald-700 border-emerald-200';
+        return 'bg-emerald-50/60 text-emerald-600 border-emerald-200/50';
     }
   };
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 mb-8">
-      <div className="bg-white/85 backdrop-blur-xl border border-slate-200/90 rounded-2xl p-6 sm:p-7 shadow-[0_10px_35px_rgba(15,23,42,0.03)]">
-        {/* Version Banner & Revise CTA */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 mb-5 border-b border-slate-100">
-          <div className="flex items-center gap-3 flex-wrap">
-            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-bold text-slate-800">
-              <Layers className="h-3.5 w-3.5 text-slate-500" />
-              <span>Plan Version {run.planVersion}</span>
+      <div className="glass-panel-solid rounded-2xl p-6 sm:p-7">
+        {/* Version & Revision */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 mb-5 border-b border-neutral-100/80">
+          <div className="flex items-center gap-2.5 flex-wrap">
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-50/80 border border-neutral-200/50 text-[11px] font-bold text-neutral-700">
+              <Layers className="h-3 w-3 text-neutral-400" />
+              <span>Plan v{run.planVersion}</span>
             </div>
 
             {run.status === 'planned' && (
-              <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+              <span className="badge-pill bg-emerald-50/50 text-emerald-600 border border-emerald-200/40">
                 Ready for Review
               </span>
             )}
             {run.status === 'applied' && (
-              <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
-                Applied to Base DB
+              <span className="badge-pill bg-blue-50/50 text-blue-600 border border-blue-200/40">
+                Applied
               </span>
             )}
             {run.status === 'undone' && (
-              <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
-                Undone / Restored
+              <span className="badge-pill bg-neutral-50/80 text-neutral-600 border border-neutral-200/40">
+                Undone
               </span>
             )}
           </div>
@@ -79,78 +76,74 @@ export function PlanSummary({ run, onOpenReviseModal }: PlanSummaryProps) {
           <button
             onClick={onOpenReviseModal}
             disabled={run.status === 'running'}
-            className="flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold transition-all shadow-2xs hover:shadow-xs active:scale-95 disabled:opacity-50 self-start sm:self-auto"
+            className="flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-neutral-100/60 hover:bg-neutral-200/60 text-neutral-700 text-[11px] font-semibold transition-all border border-neutral-200/50 active:scale-[0.97] disabled:opacity-40 self-start sm:self-auto"
           >
-            <Edit3 className="h-3.5 w-3.5 text-orange-600" />
-            <span>Reject & Request Safer Plan</span>
+            <Edit3 className="h-3 w-3 text-orange-500" />
+            <span>Request Safer Plan</span>
           </button>
         </div>
 
-        {/* Reviewer Feedback Notes if revision was performed */}
+        {/* Reviewer Notes */}
         {run.notes && (
-          <div className="mb-6 p-3.5 rounded-xl bg-orange-50/70 border border-orange-200 text-xs text-orange-950 flex items-start gap-2.5">
-            <AlertTriangle className="h-4 w-4 text-orange-600 shrink-0 mt-0.5" />
+          <div className="mb-6 p-3.5 rounded-xl bg-orange-50/30 border border-orange-200/40 text-[11px] text-orange-900 flex items-start gap-2.5">
+            <AlertTriangle className="h-3.5 w-3.5 text-orange-500 shrink-0 mt-0.5" />
             <div>
-              <span className="font-bold">Reviewer Rejection Feedback: </span>
-              <span className="italic">"{run.notes}"</span>
+              <span className="font-bold">Reviewer Feedback: </span>
+              <span className="italic text-orange-800">"{run.notes}"</span>
             </div>
           </div>
         )}
 
-        {/* Derived Metrics Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5">
-          {/* Operations count */}
-          <div className="p-4 rounded-xl bg-slate-50/70 border border-slate-200/80">
-            <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-1">
-              Changes Proposed
+        {/* Metrics */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          <div className="p-4 rounded-xl surface-inset">
+            <div className="text-[10px] font-semibold uppercase tracking-[0.12em] text-neutral-400 mb-1">
+              Changes
             </div>
-            <div className="text-xl sm:text-2xl font-bold text-slate-900">
+            <div className="text-xl sm:text-2xl font-bold text-neutral-900">
               {totalChanges}
             </div>
-            <div className="text-[11px] text-slate-500 mt-1">
+            <div className="text-[10px] text-neutral-400 mt-1">
               {totalRowsAffected} rows affected
             </div>
           </div>
 
-          {/* Financial Exposure */}
-          <div className="p-4 rounded-xl bg-slate-50/70 border border-slate-200/80">
-            <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-1">
-              Financial Exposure
+          <div className="p-4 rounded-xl surface-inset">
+            <div className="text-[10px] font-semibold uppercase tracking-[0.12em] text-neutral-400 mb-1">
+              Exposure
             </div>
-            <div className="text-xl sm:text-2xl font-bold text-slate-900 truncate">
-              {totalAmountInr > 0 ? formatInr(totalAmountInr) : '₹0'}
+            <div className="text-xl sm:text-2xl font-bold text-neutral-900 truncate">
+              {totalAmountInr > 0 ? formatInr(totalAmountInr) : '—'}
             </div>
-            <div className="text-[11px] text-slate-500 mt-1">
-              Total transaction volume
+            <div className="text-[10px] text-neutral-400 mt-1">
+              Transaction volume
             </div>
           </div>
 
-          {/* Peak Risk Level */}
-          <div className="p-4 rounded-xl bg-slate-50/70 border border-slate-200/80">
-            <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-1">
-              Peak Risk Level
+          <div className="p-4 rounded-xl surface-inset">
+            <div className="text-[10px] font-semibold uppercase tracking-[0.12em] text-neutral-400 mb-1">
+              Peak Risk
             </div>
-            <div className="flex items-center gap-2">
-              <span className={`text-xs sm:text-sm font-bold px-2.5 py-1 rounded-lg border ${getRiskStyle(highestRisk)}`}>
+            <div className="flex items-center gap-2 mt-1">
+              <span className={`text-xs font-bold px-2.5 py-1 rounded-lg border ${getRiskStyle(highestRisk)}`}>
                 {highestRisk}
               </span>
             </div>
-            <div className="text-[11px] text-slate-500 mt-1 flex items-center gap-1">
-              <ShieldAlert className="h-3 w-3 text-slate-400" />
-              <span>Multi-vector assessment</span>
+            <div className="text-[10px] text-neutral-400 mt-1.5 flex items-center gap-1">
+              <ShieldAlert className="h-2.5 w-2.5" />
+              <span>Multi-vector</span>
             </div>
           </div>
 
-          {/* Average Intent Drift */}
-          <div className="p-4 rounded-xl bg-slate-50/70 border border-slate-200/80">
-            <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-1">
-              Intent Drift Score
+          <div className="p-4 rounded-xl surface-inset">
+            <div className="text-[10px] font-semibold uppercase tracking-[0.12em] text-neutral-400 mb-1">
+              Intent Drift
             </div>
-            <div className="text-xl sm:text-2xl font-bold text-slate-900">
+            <div className="text-xl sm:text-2xl font-bold text-neutral-900">
               {avgDrift}
             </div>
-            <div className="text-[11px] text-slate-500 mt-1">
-              0.0 = exact, 1.0 = divergence
+            <div className="text-[10px] text-neutral-400 mt-1">
+              0.0 = exact, 1.0 = divergent
             </div>
           </div>
         </div>

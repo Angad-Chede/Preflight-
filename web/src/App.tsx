@@ -260,25 +260,25 @@ export function App() {
     : 'planned';
 
   return (
-    <div className="min-h-screen text-slate-900 pb-24 selection:bg-orange-500/20 selection:text-orange-900">
-      {/* 1. Glassy Floating Navbar */}
+    <div className="min-h-screen text-neutral-900 pb-24">
+      {/* Navbar */}
       <Navbar
         baseHash={baseHash}
         mode={mode}
         serverOnline={serverOnline}
       />
 
-      {/* 2. Visual Architecture Pipeline */}
+      {/* Architecture Pipeline */}
       <ArchitectureFlow currentStage={flowStage} />
 
       {/* Error Banner */}
       {errorMessage && (
         <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 mb-6">
-          <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-800 text-xs font-medium flex items-center justify-between">
+          <div className="p-3.5 rounded-xl bg-red-50/40 border border-red-200/40 text-red-700 text-[11px] font-medium flex items-center justify-between">
             <span>{errorMessage}</span>
             <button
               onClick={() => setErrorMessage(null)}
-              className="text-red-600 font-bold hover:underline"
+              className="text-red-500 font-bold hover:underline text-[10px]"
             >
               Dismiss
             </button>
@@ -286,13 +286,13 @@ export function App() {
         </div>
       )}
 
-      {/* 3. Scenario Selector & Launcher */}
+      {/* Scenario Picker */}
       <ScenarioPicker
         onStartRun={handleStartRun}
         isRunning={isRunning}
       />
 
-      {/* 4. Live Step Timeline */}
+      {/* Step Timeline */}
       {activeRun && (
         <StepTimeline
           steps={activeRun.steps}
@@ -300,7 +300,7 @@ export function App() {
         />
       )}
 
-      {/* 5. Plan Summary Header */}
+      {/* Plan Summary */}
       {activeRun && (
         <PlanSummary
           run={activeRun}
@@ -308,15 +308,15 @@ export function App() {
         />
       )}
 
-      {/* 6. Risk-Sorted Changes List */}
+      {/* Changes List */}
       {activeRun && sortedChanges.length > 0 && (
-        <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 space-y-5 mb-8">
+        <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 space-y-4 mb-8">
           <div className="flex items-center justify-between">
-            <h2 className="text-base sm:text-lg font-bold text-slate-900">
-              Evaluated Operations & Changes ({sortedChanges.length})
+            <h2 className="text-sm font-bold text-neutral-800">
+              Operations & Changes ({sortedChanges.length})
             </h2>
-            <span className="text-xs text-slate-500">
-              Sorted by Risk Priority (Highest First)
+            <span className="text-[10px] text-neutral-400 tracking-wide">
+              Sorted by Risk Priority
             </span>
           </div>
 
@@ -333,7 +333,7 @@ export function App() {
         </main>
       )}
 
-      {/* 7. Receipt Panel (After Apply or Undo) */}
+      {/* Receipt Panel */}
       {activeRun && (
         <ReceiptPanel
           run={activeRun}
@@ -343,7 +343,7 @@ export function App() {
         />
       )}
 
-      {/* 8. Sticky Apply Bar */}
+      {/* Sticky Apply Bar */}
       {activeRun && (
         <StickyApplyBar
           changes={activeRun.changes}
@@ -353,7 +353,7 @@ export function App() {
         />
       )}
 
-      {/* 9. CRITICAL Typed Confirm Modal */}
+      {/* Critical Confirm Modal */}
       <CriticalConfirmModal
         change={criticalChange}
         onClose={() => setCriticalChange(null)}
@@ -362,7 +362,7 @@ export function App() {
         }
       />
 
-      {/* 10. Revise Plan Feedback Modal */}
+      {/* Revise Modal */}
       <ReviseModal
         isOpen={isReviseOpen}
         onClose={() => setIsReviseOpen(false)}
@@ -374,4 +374,3 @@ export function App() {
 }
 
 export default App;
-

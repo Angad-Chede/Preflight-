@@ -4,11 +4,70 @@
 
 @layer base {
   body {
-    @apply bg-[#fafafc] text-slate-900 font-sans antialiased;
+    @apply bg-[#f6f5f1] text-neutral-900 font-sans antialiased;
     background-image: 
-      radial-gradient(ellipse at 50% -10%, rgba(249, 115, 22, 0.05) 0%, transparent 70%),
-      radial-gradient(ellipse at 100% 100%, rgba(241, 245, 249, 0.8) 0%, transparent 60%);
+      radial-gradient(ellipse at 30% -5%, rgba(249, 115, 22, 0.03) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 10%, rgba(200, 195, 185, 0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 100%, rgba(245, 240, 230, 0.6) 0%, transparent 50%);
     background-attachment: fixed;
+  }
+
+  ::selection {
+    @apply bg-orange-500/15 text-orange-950;
+  }
+
+  /* Custom scrollbar for the warm aesthetic */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-neutral-300/60 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-neutral-400/60;
   }
 }
 
+@layer components {
+  /* Glass card utility */
+  .glass-panel {
+    @apply bg-white/75 backdrop-blur-2xl border border-neutral-200/60 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.02)];
+  }
+
+  .glass-panel-solid {
+    @apply bg-white/90 backdrop-blur-xl border border-neutral-200/70 shadow-[0_1px_2px_rgba(0,0,0,0.03),0_6px_24px_rgba(0,0,0,0.025)];
+  }
+
+  /* Subtle inset surface */
+  .surface-inset {
+    @apply bg-neutral-50/80 border border-neutral-200/50;
+  }
+
+  /* Elegant pill badge */
+  .badge-pill {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-wide;
+  }
+
+  /* Clean button base */
+  .btn-primary {
+    @apply px-5 py-2.5 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-semibold transition-all shadow-sm hover:shadow-md active:scale-[0.97];
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 rounded-xl bg-neutral-100 hover:bg-neutral-150 text-neutral-800 text-xs font-semibold transition-all border border-neutral-200/80;
+  }
+
+  .btn-accent {
+    @apply px-5 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white text-xs font-semibold transition-all shadow-sm hover:shadow-md active:scale-[0.97];
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
