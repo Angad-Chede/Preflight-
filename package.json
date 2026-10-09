@@ -12,6 +12,7 @@
     "build": "npm run build --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
     "seed": "npm run seed --workspace=server --if-present",
+    "live:smoke": "npm run live:smoke --workspace=@preflight/server",
     "e2e": "npm run e2e --workspace=web --if-present"
   },
   "devDependencies": {
