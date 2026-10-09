@@ -26,6 +26,9 @@ export interface PlanSession {
   finalize(): PlanSessionResult;
   close(): void;
   getShadowDb(): Database.Database;
+  getSteps(): Step[];
+  getLastStep(): Step | undefined;
+  recordFailedStep?(name: string, args: unknown, errorMsg: string): void;
 }
 
 const READ_TOOLS = new Set(['db_query', 'fs_read', 'infra_list_volumes']);
@@ -65,6 +68,26 @@ export function createPlanSession(
   return {
     getShadowDb() {
       return shadowDb;
+    },
+
+    getSteps() {
+      return [...steps];
+    },
+
+    getLastStep() {
+      return steps[steps.length - 1];
+    },
+
+    recordFailedStep(name: string, args: unknown, errorMsg: string) {
+      steps.push({
+        n: currentStep,
+        tool: name,
+        args,
+        result: errorMsg,
+        changeIds: [],
+        ts: Date.now()
+      });
+      currentStep++;
     },
 
     run(name: string, args: unknown): string {
