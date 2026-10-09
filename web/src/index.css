@@ -4,10 +4,11 @@
 
 @layer base {
   body {
-    @apply bg-slate-950 text-slate-100 font-sans antialiased;
+    @apply bg-[#fafafc] text-slate-900 font-sans antialiased;
     background-image: 
-      radial-gradient(at 0% 0%, rgba(249, 115, 22, 0.08) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, rgba(14, 165, 233, 0.05) 0px, transparent 50%);
+      radial-gradient(ellipse at 50% -10%, rgba(249, 115, 22, 0.05) 0%, transparent 70%),
+      radial-gradient(ellipse at 100% 100%, rgba(241, 245, 249, 0.8) 0%, transparent 60%);
     background-attachment: fixed;
   }
 }
+
