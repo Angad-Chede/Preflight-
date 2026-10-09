@@ -56,4 +56,5 @@ coverage/
 *.db-shm
 data/
 snapshots/
+runs/
 test-data/
