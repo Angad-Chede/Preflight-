@@ -6,14 +6,21 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
+      },
       colors: {
         brand: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          900: '#0c4a6e',
+          orange: '#f97316',
+          'orange-hover': '#ea580c',
+          amber: '#f59e0b',
+        },
+        risk: {
+          low: '#10b981',       // Green
+          medium: '#f59e0b',    // Amber
+          high: '#ea580c',      // Orange-red
+          critical: '#ef4444',  // Deep red
         }
       }
     },

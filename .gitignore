@@ -48,3 +48,12 @@ coverage/
 .gemini/
 .opencode/
 .agents/skills/
+
+# Databases & Snapshots
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+data/
+snapshots/
+test-data/
