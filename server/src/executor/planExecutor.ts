@@ -1,4 +1,5 @@
 import path from 'path';
+import fs from 'fs';
 import Database from 'better-sqlite3';
 import type { Step, RowOp, Change } from '@preflight/shared';
 import { createShadow } from '../db/shadow';
@@ -37,7 +38,10 @@ export function createPlanSession(
   _scenario: string,
   options?: PlanSessionOptions
 ): PlanSession {
-  const baseDbPath = options?.baseDbPath || path.resolve(process.cwd(), 'data', 'base.db');
+  const defaultBaseDir = fs.existsSync(path.resolve(process.cwd(), 'server', 'data', 'base.db'))
+    ? path.resolve(process.cwd(), 'server', 'data', 'base.db')
+    : path.resolve(process.cwd(), 'data', 'base.db');
+  const baseDbPath = options?.baseDbPath || defaultBaseDir;
   const planVersion = options?.planVersion ?? 1;
 
   // 1. Verify and hash base database
