@@ -32,3 +32,14 @@ export function hashDb(db: Database.Database, tables: string[] = TRACKED_TABLES)
 
   return hash.digest('hex');
 }
+
+export function isTrackedTable(table: string): boolean {
+  return TRACKED_TABLES.includes(table.toLowerCase());
+}
+
+export function assertTracked(table: string): boolean {
+  if (!isTrackedTable(table)) {
+    throw new Error(`Table '${table}' is not a tracked table (${TRACKED_TABLES.join(', ')})`);
+  }
+  return true;
+}
