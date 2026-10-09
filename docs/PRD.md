@@ -63,11 +63,11 @@ You tell an agent: “clean up the test orders.” It writes `DELETE FROM orders
 - **Monorepo**: npm workspaces (`shared`, `server`, `web`)
 - **Server**: Express 4, zod, tsx, cors
 - **Database**: better-sqlite3
-- **LLM**: `@anthropic-ai/sdk`, model from env (`claude-sonnet-5-5`), temperature 0
+- **LLM**: Groq (via openai client, baseURL: LLM_BASE_URL, model from env GROQ_MODEL), temperature 0
 - **Frontend**: React 18 + Vite + Tailwind CSS + Framer Motion + lucide-react
 - **Tests**: vitest (server), scripted e2e
 - **Hashing**: Node crypto SHA-256 over a canonical table dump
-- **Config**: `.env`: `ANTHROPIC_API_KEY`, `MODEL`, `MODE=live|replay`, `PORT=4000`
+- **Config**: `.env`: `GROQ_API_KEY`, `GROQ_MODEL`, `LLM_BASE_URL`, `MODE=replay|live`, `PORT=3001`
 
 ---
 

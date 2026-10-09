@@ -77,11 +77,11 @@ export interface Run {
 
 ---
 
-## 2. API Endpoints Table
+## 2. API Endpoints Table (Port 3001)
 
 | Endpoint | Method | Request Body | Response Body | Notes |
 | :--- | :--- | :--- | :--- | :--- |
-| `/api/runs` | `POST` | `{ task: string, scenario: 'A' \| 'B' \| 'C' \| 'custom', mode?: 'live' \| 'replay' }` | `{ runId: string }` | Starts async run; mode defaults to env `MODE` |
+| `/api/runs` | `POST` | `{ task: string, scenario: 'A' \| 'B' \| 'C' \| 'custom', mode?: 'live' \| 'replay' }` | `{ runId: string }` | Starts async run; mode defaults to env `MODE` (`replay`) |
 | `/api/runs/:id/stream` | `GET` | _None_ | SSE Stream (`step`, `plan_ready`, `error`) | Events carry Step or planVersion |
 | `/api/runs/:id` | `GET` | _None_ | `Run` | Full state including changes, hashes |
 | `/api/runs/:id/decisions` | `POST` | `{ changeId: string, decision: 'pending' \| 'approved' \| 'rejected', excludedPks?: Pk[], confirmText?: string }` | `Change` | Zod-validated; enforces CRITICAL confirm rule (`'I ACCEPT THE RISK'`) |
@@ -89,4 +89,16 @@ export interface Run {
 | `/api/runs/:id/apply` | `POST` | _None_ | `{ hashes: { base: string, afterApply: string }, applied: number }` | Only approved changes replayed |
 | `/api/runs/:id/undo` | `POST` | _None_ | `{ hashes: { base: string, afterUndo: string }, match: boolean }` | Restores snapshot; match must be true |
 | `/api/db/hash` | `GET` | _None_ | `{ hash: string }` | Live base hash for the "0 real writes" badge |
-| `/api/health` | `GET` | _None_ | `{ status: string, timestamp: string, mode: string, model: string }` | Health check endpoint |
+| `/api/health` | `GET` | _None_ | `{ status: string, timestamp: string, mode: 'live' \| 'replay', model: string }` | Server health check endpoint |
+
+---
+
+## 3. Environment Variables
+
+| Variable | Default / Format | Notes |
+| :--- | :--- | :--- |
+| `GROQ_API_KEY` | _empty_ | Free tier API key from console.groq.com |
+| `GROQ_MODEL` | _empty (no default)_ | Tool-calling model ID; rotated by Groq |
+| `LLM_BASE_URL` | `https://api.groq.com/openai/v1` | OpenAI-compatible endpoint |
+| `MODE` | `replay` | `replay` (default) or `live` |
+| `PORT` | `3001` | Express server port |

@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import { MODE, MODEL } from './config';
+import { MODE, GROQ_MODEL } from './config';
 
 export const app = express();
 
@@ -12,6 +12,6 @@ app.get('/api/health', (_req, res) => {
     status: 'ok',
     timestamp: new Date().toISOString(),
     mode: MODE,
-    model: MODEL
+    model: GROQ_MODEL || 'none'
   });
 });

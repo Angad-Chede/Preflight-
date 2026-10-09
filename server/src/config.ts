@@ -7,16 +7,18 @@ dotenv.config();
 
 export interface AppConfig {
   PORT: number;
-  MODE: string;
-  MODEL: string;
-  ANTHROPIC_API_KEY: string;
+  MODE: 'live' | 'replay';
+  GROQ_API_KEY: string;
+  GROQ_MODEL: string;
+  LLM_BASE_URL: string;
 }
 
 export const config: AppConfig = {
   PORT: process.env.PORT ? parseInt(process.env.PORT, 10) : 3001,
-  MODE: process.env.MODE || process.env.NODE_ENV || 'development',
-  MODEL: process.env.MODEL || 'claude-3-5-sonnet-20241022',
-  ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY || ''
+  MODE: (process.env.MODE as 'live' | 'replay') || 'replay',
+  GROQ_API_KEY: process.env.GROQ_API_KEY || '',
+  GROQ_MODEL: process.env.GROQ_MODEL || '', // pick a tool-calling model from console.groq.com/docs/models; no default
+  LLM_BASE_URL: process.env.LLM_BASE_URL || 'https://api.groq.com/openai/v1'
 };
 
-export const { PORT, MODE, MODEL, ANTHROPIC_API_KEY } = config;
+export const { PORT, MODE, GROQ_API_KEY, GROQ_MODEL, LLM_BASE_URL } = config;

@@ -48,3 +48,10 @@ Completed Phase 1 of 8 for Preflight:
 
 ## Next Phase Handoff (Phase 2)
 Ready for Phase 2: Implement the seven tools (`manifest.ts`, `impl.ts`), the diff engine (`diff.ts`), the plan executor (`planExecutor.ts`), and the grouping into `Change` objects (`group.ts`).
+
+---
+Phase 1.5 patch applied:
+- Swapped Anthropic configuration for Groq (GROQ_API_KEY, GROQ_MODEL, LLM_BASE_URL, MODE=replay, PORT=3001).
+- Updated docs/CONTRACTS.md, docs/PRD.md, .env.example, and added docs/PRD_PATCH_GROQ.md.
+- Verified Vite proxy and backend communicate over port 3001.
+
