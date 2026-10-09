@@ -8,8 +8,10 @@ import {
   submitDecision,
   submitRevision,
   applyRun,
-  undoRun
+  undoRun,
+  resetDatabase
 } from './api';
+import { CheckCircle2 } from 'lucide-react';
 import { Navbar } from './components/Navbar';
 import { ArchitectureFlow } from './components/ArchitectureFlow';
 import { ScenarioPicker } from './components/ScenarioPicker';
@@ -38,6 +40,8 @@ export function App() {
   const [undoMatch, setUndoMatch] = useState<boolean | undefined>(undefined);
   const [mode, setMode] = useState<'live' | 'replay'>('replay');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [isResetting, setIsResetting] = useState<boolean>(false);
+  const [resetSuccessMessage, setResetSuccessMessage] = useState<string | null>(null);
 
   // Modals state
   const [criticalChange, setCriticalChange] = useState<Change | null>(null);
@@ -259,6 +263,24 @@ export function App() {
     ? 'applied'
     : 'planned';
 
+  const handleResetDb = async () => {
+    setIsResetting(true);
+    setErrorMessage(null);
+    try {
+      const res = await resetDatabase();
+      setBaseHash(res.hash);
+      setActiveRun(null);
+      setUndoMatch(undefined);
+      setResetSuccessMessage(`Database reset to canonical seed state (${res.hash.slice(0, 8)}...)`);
+      setTimeout(() => setResetSuccessMessage(null), 4000);
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : String(err);
+      setErrorMessage(`Reset failed: ${msg}`);
+    } finally {
+      setIsResetting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen text-neutral-900 pb-24">
       {/* Navbar */}
@@ -266,10 +288,30 @@ export function App() {
         baseHash={baseHash}
         mode={mode}
         serverOnline={serverOnline}
+        onResetDb={handleResetDb}
+        isResetting={isResetting}
       />
 
       {/* Architecture Pipeline */}
       <ArchitectureFlow currentStage={flowStage} />
+
+      {/* Reset Success Banner */}
+      {resetSuccessMessage && (
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 mb-6">
+          <div className="p-3.5 rounded-xl bg-emerald-50/70 border border-emerald-200/60 text-emerald-800 text-[11px] font-semibold flex items-center justify-between shadow-xs">
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+              <span>{resetSuccessMessage}</span>
+            </div>
+            <button
+              onClick={() => setResetSuccessMessage(null)}
+              className="text-emerald-700 font-bold hover:underline text-[10px]"
+            >
+              Dismiss
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Error Banner */}
       {errorMessage && (

@@ -5,6 +5,7 @@ import Database from 'better-sqlite3';
 import type { Run, Change, Pk } from '@preflight/shared';
 import { MODE } from '../config';
 import { hashDb } from '../db/hash';
+import { seedDatabase } from '../db/seed';
 import { snapshot, restore } from '../db/snapshot';
 import { getBaseDbPath, getSnapshotsDir, getRun, saveRun } from '../storage/runs';
 import { runAgentLoop } from '../agent/agentLoop';
@@ -50,6 +51,37 @@ class RunOrchestrator {
     const db = new Database(dbPath, { readonly: true });
     try {
       return hashDb(db);
+    } finally {
+      db.close();
+    }
+  }
+
+  public resetDatabase(): { ok: boolean; hash: string; customerCount: number; orderCount: number } {
+    const dbPath = getBaseDbPath();
+    const dir = path.dirname(dbPath);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    const db = new Database(dbPath);
+    try {
+      const seedResult = seedDatabase(db);
+      const snapshotsDir = getSnapshotsDir();
+      if (fs.existsSync(snapshotsDir)) {
+        const files = fs.readdirSync(snapshotsDir);
+        for (const file of files) {
+          try {
+            fs.unlinkSync(path.join(snapshotsDir, file));
+          } catch {
+            // ignore
+          }
+        }
+      }
+      return {
+        ok: true,
+        hash: seedResult.hash,
+        customerCount: seedResult.customerCount,
+        orderCount: seedResult.orderCount
+      };
     } finally {
       db.close();
     }

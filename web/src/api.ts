@@ -129,3 +129,21 @@ export async function undoRun(runId: string): Promise<UndoResponse> {
   }
   return res.json();
 }
+
+export interface ResetResponse {
+  ok: boolean;
+  hash: string;
+  customerCount: number;
+  orderCount: number;
+}
+
+export async function resetDatabase(): Promise<ResetResponse> {
+  const res = await fetch('/api/reset', {
+    method: 'POST'
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.error || 'Failed to reset database');
+  }
+  return res.json();
+}

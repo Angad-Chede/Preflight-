@@ -1,14 +1,16 @@
 import { useState } from 'react';
-import { ShieldCheck, Copy, Check, Server, Sparkles } from 'lucide-react';
+import { ShieldCheck, Copy, Check, Server, Sparkles, RotateCcw } from 'lucide-react';
 
 interface NavbarProps {
   baseHash: string;
   isHashVerified?: boolean;
   mode: 'live' | 'replay';
   serverOnline: boolean;
+  onResetDb?: () => void;
+  isResetting?: boolean;
 }
 
-export function Navbar({ baseHash, mode, serverOnline }: NavbarProps) {
+export function Navbar({ baseHash, mode, serverOnline, onResetDb, isResetting }: NavbarProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopyHash = () => {
@@ -76,6 +78,19 @@ export function Navbar({ baseHash, mode, serverOnline }: NavbarProps) {
               <Copy className="h-3 w-3 text-emerald-400 opacity-50 group-hover:opacity-100 transition-opacity" />
             )}
           </button>
+
+          {/* Reset DB Button */}
+          {onResetDb && (
+            <button
+              onClick={onResetDb}
+              disabled={isResetting}
+              title="Reset database to pristine seed state (POST /api/reset)"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-neutral-100/80 hover:bg-neutral-200/80 border border-neutral-200/60 text-neutral-600 text-[11px] font-semibold transition-all active:scale-95 disabled:opacity-50"
+            >
+              <RotateCcw className={`h-3 w-3 ${isResetting ? 'animate-spin text-orange-500' : 'text-neutral-500'}`} />
+              <span className="hidden sm:inline text-[10px] uppercase tracking-wider">Reset DB</span>
+            </button>
+          )}
 
           {/* Server Dot */}
           <div
