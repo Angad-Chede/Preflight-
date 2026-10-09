@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import { MODE, GROQ_MODEL } from './config';
+import { runsRouter } from './routes/runs';
+import { dbRouter } from './routes/db';
 
 export const app = express();
 
@@ -15,3 +17,7 @@ app.get('/api/health', (_req, res) => {
     model: GROQ_MODEL || 'none'
   });
 });
+
+app.use('/api/runs', runsRouter);
+app.use('/api/db', dbRouter);
+
