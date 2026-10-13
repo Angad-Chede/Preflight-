@@ -205,9 +205,3 @@ Preflight/
         │                     # StickyApplyBar, ReceiptPanel
         └── api.ts            # Client API integration with /api endpoints
 ```
-
----
-
-## 9. License
-
-MIT
