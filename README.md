@@ -124,9 +124,7 @@ npm run build
 ```
 
 
-- `tests/replay.test.ts`: Deterministic replay fixtures for Scenarios A, B, C and revisions.
-- `tests/risk.test.ts`: Deterministic scoring rules, financial blast radius, anomaly flags, intent drift judge.
-- `tests/executor.test.ts`: Tool execution isolation, state diffing, base hash immutability assertion.
+
 - `tests/hash.test.ts`: Canonical SHA-256 database hashing and determinism.
 - `tests/shadow.test.ts`: In-memory SQLite serialization and snapshot rollback.
 - `tests/diff.test.ts`: Row-level state diffing.
