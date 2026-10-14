@@ -124,13 +124,6 @@ npm run build
 ```
 
 
-
-- `tests/hash.test.ts`: Canonical SHA-256 database hashing and determinism.
-- `tests/shadow.test.ts`: In-memory SQLite serialization and snapshot rollback.
-- `tests/diff.test.ts`: Row-level state diffing.
-- `src/health.test.ts`: Health check endpoint.
-- `web/src/App.test.ts`: Web workspace smoke test.
-
 ---
 
 ## 6. REST & Server-Sent Events (SSE) API
