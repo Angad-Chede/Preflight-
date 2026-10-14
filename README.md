@@ -123,10 +123,7 @@ npm run demo
 npm run build
 ```
 
-### Test Suite Summary
-- `tests/security.test.ts`: `ATTACH DATABASE` isolation bypass defense, keyword guards, comment stripping, secret leak sweep.
-- `tests/e2e.test.ts`: Scenarios A, B, C end-to-end replay, row exclusion, typed confirmation, database reset.
-- `tests/orchestrator.test.ts`: Express API routes, SSE streaming, decision validation, transaction apply and undo.
+
 - `tests/replay.test.ts`: Deterministic replay fixtures for Scenarios A, B, C and revisions.
 - `tests/risk.test.ts`: Deterministic scoring rules, financial blast radius, anomaly flags, intent drift judge.
 - `tests/executor.test.ts`: Tool execution isolation, state diffing, base hash immutability assertion.
