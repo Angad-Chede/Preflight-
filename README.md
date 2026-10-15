@@ -184,8 +184,4 @@ Preflight/
 │       ├── fixtures/         # Deterministic replay fixtures (A, B, C & revisions)
 │       ├── orchestrator/     # Run service, SSE event broker, apply & undo engine
 │       ├── risk/             # Deterministic risk engine, anomaly detectors, intent judge
-│       ├── routes/           # REST endpoints (/runs, /db, /reset)
-│       └── tools/            # 7 sandboxed tools and SQL security guard
-└── web/                      # @preflight/web: React 18, Vite & Tailwind frontend
-    └── src/
-        ├── components/       # ArchitectureFlow, Navbar, ScenarioPicker      
+│       ├── routes/           # REST endpoints    
