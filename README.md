@@ -188,6 +188,4 @@ Preflight/
 │       └── tools/            # 7 sandboxed tools and SQL security guard
 └── web/                      # @preflight/web: React 18, Vite & Tailwind frontend
     └── src/
-        ├── components/       # ArchitectureFlow, Navbar, ScenarioPicker, StepTimeline,
-        │                     # PlanSummary, ChangeCard, CriticalConfirmModal, ReviseModal,
-        │                    
+        ├── components/       # ArchitectureFlow, Navbar, ScenarioPicker      
