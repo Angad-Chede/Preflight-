@@ -190,6 +190,4 @@ Preflight/
     └── src/
         ├── components/       # ArchitectureFlow, Navbar, ScenarioPicker, StepTimeline,
         │                     # PlanSummary, ChangeCard, CriticalConfirmModal, ReviseModal,
-        │                     # StickyApplyBar, ReceiptPanel
-        └── api.ts            # Client API integration with /api endpoints
-```
+        │                    
