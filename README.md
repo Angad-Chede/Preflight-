@@ -180,5 +180,4 @@ Preflight/
 │   └── src/
 │       ├── agent/            # Agent loop, Groq LLM client, replay runner
 │       ├── db/               # Schema, Mulberry32 seed, shadow factory, hash, snapshot
-│       ├── executor/         # Plan session executor, row-level diff, collapse, grouping
-│       ├── fixtures/         # Deterministic     
+│       ├── executor/         # Plan session    
