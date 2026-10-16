@@ -183,5 +183,4 @@ Preflight/
 │       ├── executor/         # Plan session executor, row-level diff, collapse, grouping
 │       ├── fixtures/         # Deterministic replay fixtures (A, B, C & revisions)
 │       ├── orchestrator/     # Run service, SSE event broker, apply & undo engine
-│       ├── risk/             # Deterministic risk engine, anomaly detectors, intent judge
-│       ├── routes/           # REST endpoints    
+│       ├── risk/             # Deterministic    
