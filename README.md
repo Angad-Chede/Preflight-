@@ -171,5 +171,4 @@ Preflight/
 ├── tsconfig.base.json        # Strict TypeScript base configuration
 ├── .env.example              # Environment template
 ├── scripts/
-│   └── curl-demo.sh          # Full flow verification bash script
-├── shared/                   # @preflight/shared: Frozen domain type
+│   └── curl-demo.sh          # Full flow ver
