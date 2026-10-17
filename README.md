@@ -172,7 +172,4 @@ Preflight/
 ├── .env.example              # Environment template
 ├── scripts/
 │   └── curl-demo.sh          # Full flow verification bash script
-├── shared/                   # @preflight/shared: Frozen domain types
-│   └── src/
-│       └── types.ts          # RowOp, Change, Risk, Step, Run
-├── server/                    
+├── shared/                   # @preflight/shared: Frozen domain type
