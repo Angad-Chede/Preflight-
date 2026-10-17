@@ -175,7 +175,4 @@ Preflight/
 ├── shared/                   # @preflight/shared: Frozen domain types
 │   └── src/
 │       └── types.ts          # RowOp, Change, Risk, Step, Run
-├── server/                   # @preflight/server: Express & SQLite backend
-│   ├── vitest.config.ts      # Sequential execution test config
-│   └── src/
-│       ├── agent/            # Agent loop,   
+├── server/                    
