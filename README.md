@@ -178,6 +178,4 @@ Preflight/
 ├── server/                   # @preflight/server: Express & SQLite backend
 │   ├── vitest.config.ts      # Sequential execution test config
 │   └── src/
-│       ├── agent/            # Agent loop, Groq LLM client, replay runner
-│       ├── db/               # Schema, Mulberry32 seed, shadow factory, hash, snapshot
-│       ├── executor/         # Plan session    
+│       ├── agent/            # Agent loop,   
