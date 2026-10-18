@@ -168,5 +168,4 @@ npm run build
 ```
 Preflight/
 ├── package.json              # Root npm workspaces configuration
-├── tsconfig.base.json        # Strict TypeScript base configuration
-├── .env.example             
+├── tsconfig.base.json                 
