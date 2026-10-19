@@ -167,4 +167,4 @@ npm run build
 
 ```
 Preflight/
-├── package.json              # Root npm workspaces configurat          
+├── package.json               
