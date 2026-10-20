@@ -10,8 +10,7 @@
 In production environments, developers increasingly give autonomous coding and operations agents database and cloud infrastructure credentials.
 
 Consider a simple, reasonable instruction:
-> *"Clean up the test orders from the database."*
-
+> *"Clean up the test orders from the database
 A standard LLM agent inspects the schema and runs:
 ```sql
 DELETE FROM orders WHERE status != 'delivered';
