@@ -157,5 +157,3 @@ npm run build
    - `applyRun` takes a filesystem snapshot before executing.
    - Executes approved operations inside a strict SQLite transaction (`BEGIN IMMEDIATE` -> ops -> `COMMIT`).
    - If any operation fails, the transaction rolls back immediately and the snapshot is restored.
-4. **Secret Leak Protection**:
-   - Automated test suite verifies zero API keys (`gsk_`, `sk-`, `AIzaS
