@@ -155,5 +155,5 @@ npm run build
    - **Table Whitelist**: Only permits mutations targeting tracked business tables (`orders`, `customers`, `complaints`, `refunds`, `email_outbox`, `infra_volumes`).
 3. **Atomic Apply with Rollback**:
    - `applyRun` takes a filesystem snapshot before executing.
-   - Executes approved operations inside a strict SQLite transaction (`BEGIN IMMEDIATE` -> ops -> `COMMIT`).
+ 
    
