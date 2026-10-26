@@ -153,6 +153,5 @@ npm run build
    - **Forbidden Keywords**: Disallows `ATTACH`, `DETACH`, `PRAGMA`, `LOAD_EXTENSION`, `VACUUM`, `DROP`, `ALTER`, `CREATE`, `REINDEX`, `REPLACE INTO`, and `sqlite_master`.
    - **Comment Evasion Stripping**: Strips `--` and `/* ... */` comments to prevent parser evasion.
    - **Table Whitelist**: Only permits mutations targeting tracked business tables (`orders`, `customers`, `complaints`, `refunds`, `email_outbox`, `infra_volumes`).
-3. **Atomic Apply with Rollback**:
  
    
