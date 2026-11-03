@@ -149,8 +149,7 @@ npm run build
    - All tool executions are executed exclusively on the memory shadow instance.
    - `session.finalize()` asserts that the disk database hash has not altered by even a single byte.
 2. **SQL Injection & Sandbox Isolation Guard (`server/src/tools/guard.ts`)**:
-   - **`ATTACH DATABASE` Defense**: Strictly blocks attempts to attach external or real database files.
- 
+   
    
  
    
