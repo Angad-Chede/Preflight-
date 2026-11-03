@@ -150,8 +150,7 @@ npm run build
    - `session.finalize()` asserts that the disk database hash has not altered by even a single byte.
 2. **SQL Injection & Sandbox Isolation Guard (`server/src/tools/guard.ts`)**:
    - **`ATTACH DATABASE` Defense**: Strictly blocks attempts to attach external or real database files.
-   - **Forbidden Keywords**: Disallows `ATTACH`, `DETACH`, `PRAGMA`, `LOAD_EXTENSION`, `VACUUM`, `DROP`, `ALTER`, `CREATE`, `REINDEX`, `REPLACE INTO`, and `sqlite_master`.
-  
+ 
    
  
    
