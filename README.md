@@ -148,8 +148,6 @@ npm run build
    - `createShadow(baseDbPath)` serializes the real SQLite file into RAM using `better-sqlite3`.
    - All tool executions are executed exclusively on the memory shadow instance.
    - `session.finalize()` asserts that the disk database hash has not altered by even a single byte.
-2. **SQL Injection & Sandbox Isolation Guard (`server/src/tools/guard.ts`)**:
-   
    
  
    
