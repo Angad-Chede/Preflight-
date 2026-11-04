@@ -147,7 +147,6 @@ npm run build
 1. **Zero Real Writes Prior to Apply**:
    - `createShadow(baseDbPath)` serializes the real SQLite file into RAM using `better-sqlite3`.
    - All tool executions are executed exclusively on the memory shadow instance.
-   - `session.finalize()` asserts that the disk database hash has not altered by even a single byte.
    
  
    
