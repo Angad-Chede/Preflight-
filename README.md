@@ -142,7 +142,5 @@ npm run build
 
 ---
 
-## 7. Security Architecture & Isolation Guarantees
-   
  
    
