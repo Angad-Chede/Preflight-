@@ -143,10 +143,6 @@ npm run build
 ---
 
 ## 7. Security Architecture & Isolation Guarantees
-
-1. **Zero Real Writes Prior to Apply**:
-   - `createShadow(baseDbPath)` serializes the real SQLite file into RAM using `better-sqlite3`.
-   - All tool executions are executed exclusively on the memory shadow instance.
    
  
    
