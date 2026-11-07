@@ -138,9 +138,7 @@ npm run build
 | `/api/runs/:id/decisions` | `POST` | `{ changeId, decision, excludedPks?, confirmText? }` | Approves/rejects changes; enforces CRITICAL confirm rule |
 | `/api/runs/:id/revise`| `POST` | `{ notes }` -> `{ planVersion }` | Generates revised plan v+1 incorporating human review notes |
 | `/api/runs/:id/apply` | `POST` | `{ hashes: { base, afterApply }, applied }` | Takes snapshot, replays approved row ops in 1 transaction |
-| `/api/runs/:id/undo`  | `POST` | `{ hashes: { base, afterUndo }, match: true }` | Restores snapshot; verifies pre-apply hash equivalence |
-
----
+| `/api/runs/:id/undo`  | `POST` | `{ hashes: { base, afterUndo }, match: true }` | Restores snapshot;
 
  
    
