@@ -136,6 +136,5 @@ npm run build
 | `/api/runs/:id` | `GET` | `Run` object | Fetches full run state, steps, changes, and risk scores |
 | `/api/runs/:id/stream`| `GET` | SSE stream (`step`, `plan_ready`, `error`) | Streams live agent tool executions to the frontend |
 | `/api/runs/:id/decisions` | `POST` | `{ changeId, decision, excludedPks?, confirmText? }` | Approves/rejects changes; enforces CRITICAL confirm rule |
-| `/api/runs/:id/revise`| `POST` | `{ notes }` -> `{ planVersion }` | Generates revised plan v+1 incorporating human review notes |
-| `/api/runs/:id/apply` 
+| `/api/runs/:id/revise`| `POST` | `{ notes }` -> `{ planVersion }` 
    
