@@ -135,5 +135,4 @@ npm run build
 | `/api/runs` | `POST` | `{ task, scenario, mode? }` -> `{ runId }` | Initializes asynchronous rehearsal run |
 | `/api/runs/:id` | `GET` | `Run` object | Fetches full run state, steps, changes, and risk scores |
 | `/api/runs/:id/stream`| `GET` | SSE stream (`step`, `plan_ready`, `error`) | Streams live agent tool executions to the frontend |
-| `/api/runs/:id/decisions` | `POST` | `{ changeId, decision, excludedPks?, confirmText? }` | Approves/rejects changes; enforces CRITICAL confirm rule |
-| `/api/runs/:id/revise`| `POST` | `{ notes }` 
+| `/api/runs/:id/decisions` | `POST` | `{ changeId, decision, excludedPks?, confirmText? }` 
