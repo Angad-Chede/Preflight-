@@ -134,5 +134,4 @@ npm run build
 | `/api/reset` | `POST` | `{ ok: true, hash, customerCount, orderCount }` | Resets SQLite base DB to canonical seed hash |
 | `/api/runs` | `POST` | `{ task, scenario, mode? }` -> `{ runId }` | Initializes asynchronous rehearsal run |
 | `/api/runs/:id` | `GET` | `Run` object | Fetches full run state, steps, changes, and risk scores |
-| `/api/runs/:id/stream`| `GET` | SSE stream (`step`, `plan_ready`, `error`) | Streams live agent tool executions to the frontend |
-| 
+| `/api/runs/:id/stream`| `GET` | SSE stream (`step`, `plan_ready`, `error`) |
