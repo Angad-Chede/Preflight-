@@ -1,4 +1,4 @@
-# PREFLIGHT
+if# PREFLIGHT
 
 > **AI Agent Rehearsal & Dry-Run Engine**  
 > *Intercepts AI agent tool calls, executes them on an in-memory shadow SQLite database, generates reviewable row-level diffs, scores financial & data risk, and guarantees zero real writes before human approval — with hash-proven cryptographic rollback.*
@@ -134,4 +134,4 @@ npm run build
 | `/api/reset` | `POST` | `{ ok: true, hash, customerCount, orderCount }` | Resets SQLite base DB to canonical seed hash |
 | `/api/runs` | `POST` | `{ task, scenario, mode? }` -> `{ runId }` | Initializes asynchronous rehearsal run |
 | `/api/runs/:id` | `GET` | `Run` object | Fetches full run state, steps, changes, and risk scores |
-| `/api/runs/:id/stream`| `GET` |
+| `/api/runs/:id/stream`
